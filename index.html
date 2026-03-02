@@ -1,158 +1,499 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-PT" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rui Obras | Reabilitação e Remodelação em Lisboa</title>
-    
+    <title>Rui Obras | Engenharia e Construção de Luxo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0B0B0B;
-            --bg-secondary: #161616;
-            --accent-color: #FF8A00;
-            --text-light: #f5f5f5;
-            --text-muted: #aaaaaa;
-            --border-color: #333333;
+            --bg-main: #080808;
+            --bg-secondary: #121212;
+            --accent: #FF8A00;
+            --accent-hover: #e07a00;
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+            --border-color: rgba(255, 255, 255, 0.1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-color); color: var(--text-light); line-height: 1.6; overflow-x: hidden; }
-        a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
-        a:hover { color: var(--accent-color); }
-        ul { list-style: none; }
-        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .section-title { font-size: 2.5rem; font-weight: 800; text-transform: uppercase; margin-bottom: 3rem; text-align: center; }
-        .section-title span { color: var(--accent-color); }
-        section { padding: 100px 0; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        header { position: fixed; top: 0; width: 100%; background: rgba(11, 11, 11, 0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid var(--border-color); padding: 20px 0; }
-        nav { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
-        .logo span { color: var(--accent-color); }
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links li a { font-weight: 600; font-size: 0.9rem; text-transform: uppercase; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
 
-        #hero { height: 100vh; display: flex; align-items: center; background: linear-gradient(rgba(11, 11, 11, 0.8), rgba(11, 11, 11, 0.9)), url('https://images.unsplash.com/photo-1541888086225-f6740f9e0490?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; }
-        .hero-title { font-size: 4rem; font-weight: 800; line-height: 1.1; text-transform: uppercase; }
-        .hero-title span { color: var(--accent-color); }
-        .hero-subtitle { font-size: 1.2rem; color: var(--text-muted); margin: 20px 0 40px; max-width: 600px; }
-        .btn { display: inline-block; padding: 15px 35px; background-color: var(--accent-color); color: var(--bg-color); font-weight: 800; text-transform: uppercase; border: 2px solid var(--accent-color); transition: 0.3s; cursor: pointer; }
-        .btn:hover { background-color: transparent; color: var(--accent-color); }
-        .btn-outline { background-color: transparent; color: #fff; border-color: #fff; margin-left: 10px; }
+        h1, h2, h3, h4 {
+            font-family: 'Syne', sans-serif;
+            text-transform: uppercase;
+        }
 
-        .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-        .sobre-img { width: 100%; border-left: 5px solid var(--accent-color); box-shadow: 20px 20px 0px rgba(255, 138, 0, 0.1); }
-        .servicos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .servico-card { background: var(--bg-secondary); padding: 40px; border: 1px solid var(--border-color); transition: 0.3s; }
-        .servico-card:hover { transform: translateY(-10px); border-color: var(--accent-color); }
-        .servico-card h3 { color: var(--accent-color); margin-bottom: 15px; }
+        /* Utility Classes */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
 
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .portfolio-item { position: relative; height: 300px; overflow: hidden; }
-        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .portfolio-overlay { position: absolute; inset: 0; background: rgba(255, 138, 0, 0.9); display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; color: #000; }
-        .portfolio-item:hover img { transform: scale(1.1); }
-        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+        .section {
+            padding: 120px 0;
+        }
 
-        .contato-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 50px; }
-        input, textarea { width: 100%; padding: 15px; background: var(--bg-secondary); border: 1px solid var(--border-color); color: #fff; margin-bottom: 20px; }
-        footer { text-align: center; padding: 50px 0; border-top: 1px solid var(--border-color); color: var(--text-muted); }
+        .text-accent { color: var(--accent); }
+        .text-muted { color: var(--text-muted); }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 24px 0;
+            background: rgba(8, 8, 8, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
 
-        @media (max-width: 992px) { .hero-title { font-size: 2.5rem; } .sobre-grid, .contato-grid { grid-template-columns: 1fr; } .nav-links { display: none; } }
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .nav-links { display: flex; }
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--bg-main);
+            padding: 16px 32px;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.4) 100%),
+                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop') center/cover;
+            z-index: -1;
+            filter: grayscale(80%) brightness(0.7);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            line-height: 1;
+            margin-bottom: 24px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 500px;
+            line-height: 1.8;
+        }
+
+        /* Sobre Section */
+        .sobre {
+            background-color: var(--bg-secondary);
+        }
+
+        .sobre-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .sobre-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .sobre-img-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-left: 4px solid var(--accent);
+        }
+
+        .sobre-img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
+        }
+
+        .sobre-img-wrapper:hover .sobre-img {
+            filter: grayscale(0%);
+        }
+
+        .sobre-content h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 32px;
+        }
+
+        .sobre-content p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        /* Serviços Section */
+        .servicos-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .servicos-header h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+            transform: translateZ(30px);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Prova Social Section */
+        .prova-social {
+            background-color: var(--bg-secondary);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 80px 0;
+        }
+
+        .stat-item h4 {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .stat-item p {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 80px;
+        }
+
+        @media (min-width: 1024px) {
+            .contact-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .contact-details h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            margin-bottom: 32px;
+        }
+
+        .contact-item h3 {
+            font-size: 0.875rem;
+            color: var(--accent);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .contact-item p {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">Rui<span>Obras</span></a>
-                <ul class="nav-links">
-                    <li><a href="#hero">Início</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#portfolio">Obras</a></li>
-                    <li><a href="#contato">Contacto</a></li>
-                </ul>
-                <a href="tel:963604042" class="btn" style="padding: 10px 20px; font-size: 0.8rem;">963 604 042</a>
-            </nav>
-        </div>
-    </header>
 
-    <section id="hero">
-        <div class="container" data-aos="fade-right">
-            <h1 class="hero-title">Engenharia e <br><span>Reabilitação</span> <br>em Lisboa</h1>
-            <p class="hero-subtitle">Transformamos espaços com rigor técnico e estética industrial. Mais de 20 anos a construir confiança em Lisboa e Arredores.</p>
-            <a href="#contato" class="btn">Orçamento Grátis</a>
-            <a href="#portfolio" class="btn btn-outline">Ver Obras</a>
+    <nav>
+        <div class="container nav-content">
+            <a href="#" class="logo">RUI<span>OBRAS</span></a>
+            <div class="nav-links">
+                <a href="#hero">Início</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+            <a href="tel:963604042" class="btn">963 604 042</a>
+        </div>
+    </nav>
+
+    <section id="hero" class="hero">
+        <div class="container hero-content">
+            <h1 class="reveal-hero">Redefinindo a <br><span class="text-accent">Engenharia</span> <br>em Lisboa</h1>
+            <p class="reveal-hero">Elevamos o padrão da construção civil com rigor técnico e estética industrial de alta classe.</p>
+            <a href="#servicos" class="btn reveal-hero">Explorar Soluções</a>
         </div>
     </section>
 
-    <section id="sobre">
+    <section id="sobre" class="section sobre">
+        <div class="container sobre-grid">
+            <div class="sobre-img-wrapper reveal">
+                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070&auto=format&fit=crop" alt="Renovação de Luxo" class="sobre-img">
+            </div>
+            <div class="sobre-content reveal">
+                <h2>Excelência em cada <span class="text-accent">detalhe</span></h2>
+                <p>Com mais de duas décadas de atuação no mercado de luxo de Lisboa, Cascais e Sintra, a Rui Obras especializa-se em projetos onde a precisão e o design se encontram.</p>
+                <p>A nossa abordagem industrial garante estruturas robustas, enquanto o nosso olhar estético entrega acabamentos dignos das melhores revistas de arquitetura.</p>
+                <a href="#contacto" class="text-accent" style="font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: 1px;">Agendar Consultoria Técnica →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="section">
         <div class="container">
-            <div class="sobre-grid">
-                <img src="https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&w=800&q=80" class="sobre-img" data-aos="zoom-in">
-                <div data-aos="fade-left">
-                    <h2 class="section-title" style="text-align: left;">Excelência em <span>Detalhe</span></h2>
-                    <p>A Rui Obras é especialista em reabilitação urbana e construção contemporânea. O nosso compromisso é a qualidade absoluta e o cumprimento de prazos.</p>
-                    <div style="display: flex; gap: 40px; margin-top: 30px;">
-                        <div><h3 style="color:#FF8A00; font-size:2.5rem;">+500</h3><p>Obras</p></div>
-                        <div><h3 style="color:#FF8A00; font-size:2.5rem;">20</h3><p>Anos</p></div>
+            <div class="servicos-header reveal">
+                <h2>Serviços de <span class="text-accent">Elite</span></h2>
+            </div>
+            <div class="cards-grid">
+                <div class="card reveal" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                    <div class="card-content">
+                        <div class="card-icon">01</div>
+                        <h3>Reabilitação de Luxo</h3>
+                        <p>Preservação histórica com reforço estrutural de última geração e design contemporâneo.</p>
+                    </div>
+                </div>
+                <div class="card reveal" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                    <div class="card-content">
+                        <div class="card-icon">02</div>
+                        <h3>Remodelação Total</h3>
+                        <p>Transformação completa de interiores focada em materiais nobres e funcionalidade absoluta.</p>
+                    </div>
+                </div>
+                <div class="card reveal" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                    <div class="card-content">
+                        <div class="card-icon">03</div>
+                        <h3>Gestão de Projetos</h3>
+                        <p>Controlo rigoroso de cronograma e orçamento. Do licenciamento à entrega da chave.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="servicos" style="background:var(--bg-secondary)">
+    <section class="section prova-social">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Os Nossos <span>Serviços</span></h2>
-            <div class="servicos-grid">
-                <div class="servico-card" data-aos="fade-up"><h3>Reabilitação</h3><p>Recuperação de edifícios históricos com reforço estrutural moderno.</p></div>
-                <div class="servico-card" data-aos="fade-up" data-aos-delay="100"><h3>Remodelação</h3><p>Design de interiores com foco em funcionalidade e estética industrial.</p></div>
-                <div class="servico-card" data-aos="fade-up" data-aos-delay="200"><h3>Construção</h3><p>Projetos chave-na-mão, da fundação aos acabamentos de luxo.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Obras <span>Realizadas</span></h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item" data-aos="flip-left"><img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&w=800&q=80"><div class="portfolio-overlay"><h3>Cozinha Industrial</h3><p>Lisboa</p></div></div>
-                <div class="portfolio-item" data-aos="flip-left" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"><div class="portfolio-overlay"><h3>Fachada Chiado</h3><p>2024</p></div></div>
-                <div class="portfolio-item" data-aos="flip-left" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"><div class="portfolio-overlay"><h3>Moradia Cascais</h3><p>2025</p></div></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contato">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Solicitar <span>Orçamento</span></h2>
-            <div class="contato-grid">
-                <div data-aos="fade-right">
-                    <p><strong>Telemóvel:</strong> 963 604 042</p>
-                    <p><strong>Local:</strong> Lisboa e Arredores</p>
-                    <p><strong>Email:</strong> geral@ruiobras.pt</p>
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <h4>+20</h4>
+                    <p>Anos de Mercado</p>
                 </div>
-                <form data-aos="fade-left">
-                    <input type="text" placeholder="Nome" required>
-                    <input type="email" placeholder="Email" required>
-                    <textarea placeholder="Projeto..."></textarea>
-                    <button type="submit" class="btn" style="width:100%">Enviar Pedido</button>
-                </form>
+                <div class="stat-item reveal">
+                    <h4>+500</h4>
+                    <p>Obras Concluídas</p>
+                </div>
+                <div class="stat-item reveal">
+                    <h4>Lisboa</h4>
+                    <p>Cascais & Sintra</p>
+                </div>
+                <div class="stat-item reveal">
+                    <h4>100%</h4>
+                    <p>Clientes Satisfeitos</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer><p>&copy; 2026 Rui Obras - Engenharia e Reabilitação.</p></footer>
+    <section id="contacto" class="section">
+        <div class="container contact-grid">
+            <div class="contact-details reveal">
+                <h2>Pronto para iniciar o seu <span class="text-accent">Legado?</span></h2>
+                <div class="contact-item">
+                    <h3>Telemóvel Directo</h3>
+                    <p>963 604 042</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Sede</h3>
+                    <p>Lisboa, Portugal</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p>geral@ruiobras.pt</p>
+                </div>
+            </div>
+            <div class="reveal">
+                <p class="text-muted" style="font-size: 1.25rem; margin-bottom: 40px;">Contacte-nos agora para uma avaliação técnica no local. Atuamos em toda a região de Lisboa com equipas especializadas.</p>
+                <a href="tel:963604042" class="btn" style="width: 100%; text-align: center;">Falar com Engenheiro Responsável</a>
+            </div>
+        </div>
+    </section>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1000, once: true });</script>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 RUI OBRAS. REDEFININDO A ENGENHARIA EM LISBOA. TODOS OS DIREITOS RESERVADOS.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Animations
+        gsap.from(".reveal-hero", {
+            y: 40,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out",
+            delay: 0.5
+        });
+
+        // Scroll Reveal Animations
+        const reveals = document.querySelectorAll(".reveal");
+        reveals.forEach((el) => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+
+        // Initialize Tilt
+        VanillaTilt.init(document.querySelectorAll(".card"), {
+            max: 10,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.2
+        });
+    </script>
 </body>
 </html>
