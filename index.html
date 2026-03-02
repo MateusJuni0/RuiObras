@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMTecnologia | Portal Sovereign</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #030303; --card: #0d0d0f; --accent: #6366f1; --border: #1f1f23; }
+        body { background: var(--bg); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; overflow: hidden; margin: 0; }
+        #canvas-container { position: fixed; inset: 0; z-index: 0; opacity: 0.3; }
+        .ui-layer { position: relative; z-index: 10; width: 100vw; height: 100vh; overflow-y: auto; overflow-x: hidden; }
+        
+        .glass { background: rgba(13, 13, 15, 0.8); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 24px; }
+        .view { display: none; opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
+        .view.active { display: flex; opacity: 1; transform: translateY(0); }
+
+        /* Sidebar fixa estilo referência */
+        .sidebar { width: 80px; height: 100vh; position: fixed; left: 0; top: 0; background: #000; border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; padding: 30px 0; z-index: 100; }
+        .nav-item { width: 50px; height: 50px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: #444; transition: 0.3s; cursor: pointer; }
+        .nav-item.active, .nav-item:hover { background: var(--accent); color: #fff; box-shadow: 0 0 20px rgba(99, 102, 241, 0.4); }
+
+        .main-content { margin-left: 80px; padding: 40px; width: calc(100vw - 80px); }
+        .kpi-card { background: var(--card); border: 1px solid var(--border); padding: 24px; border-radius: 20px; }
+        .btn-entry { background: #fff; color: #000; padding: 18px 50px; border-radius: 5px; font-weight: 800; font-family: 'Orbitron'; letter-spacing: 5px; cursor: pointer; border: none; }
+        
+        /* Gráfico Simulado estilo foto */
+        .bar { width: 35px; background: var(--accent); border-radius: 8px 8px 0 0; transition: height 1s ease-out; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+
+    <div class="ui-layer">
+        <!-- TELA 1: LOGIN (3D) -->
+        <div id="view-login" class="view active flex-col items-center justify-center h-screen text-center">
+            <h1 class="text-5xl font-black mb-4 tracking-[15px] font-[Orbitron]">DANTE</h1>
+            <p class="text-indigo-400 text-[10px] tracking-[0.8em] font-bold uppercase mb-16">Sovereign Core</p>
+            <button class="btn-entry hover:bg-indigo-600 hover:text-white transition-all shadow-[0_0_40px_rgba(255,255,255,0.1)]" onclick="showDashboard()">CONNECT</button>
+        </div>
+
+        <!-- TELA 2: DASHBOARD (FOTO REFERÊNCIA 1) -->
+        <div id="view-dash" class="view">
+            <div class="sidebar">
+                <div class="w-10 h-10 bg-indigo-600 rounded-xl mb-12 flex items-center justify-center font-bold">C</div>
+                <div class="nav-item active">🏠</div>
+                <div class="nav-item">📊</div>
+                <div class="nav-item">⚙️</div>
+            </div>
+            <div class="main-content">
+                <header class="flex justify-between items-center mb-12">
+                    <div>
+                        <h2 class="text-3xl font-black tracking-tighter">Terminal <span class="text-indigo-500">Overview</span></h2>
+                        <p class="text-zinc-500 text-xs font-bold uppercase tracking-widest mt-1">Status: High Efficiency</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <button class="bg-zinc-900 border border-zinc-800 px-6 py-3 rounded-xl text-xs font-bold uppercase">Exportar</button>
+                        <button class="bg-indigo-600 px-8 py-3 rounded-xl text-xs font-bold uppercase shadow-[0_0_20px_rgba(99,102,241,0.3)]">+ Novo Projeto</button>
+                    </div>
+                </header>
+
+                <!-- 4 CARDS NO TOPO -->
+                <div class="grid grid-cols-4 gap-8 mb-10">
+                    <div class="kpi-card"> <p class="text-zinc-600 text-[10px] font-black uppercase tracking-wider">Receita Mensal</p> <h3 class="text-4xl font-black mt-3 tracking-tighter">€ 12.450</h3> <p class="text-green-500 text-[10px] font-bold mt-2">↑ 4.5% vs ontem</p> </div>
+                    <div class="kpi-card"> <p class="text-zinc-600 text-[10px] font-black uppercase tracking-wider">Automações Ativas</p> <h3 class="text-4xl font-black mt-3 tracking-tighter">42</h3> <p class="text-indigo-400 text-[10px] font-bold mt-2">7 em espera</p> </div>
+                    <div class="kpi-card"> <p class="text-zinc-600 text-[10px] font-black uppercase tracking-wider">Leads Portugal</p> <h3 class="text-4xl font-black mt-3 tracking-tighter">150</h3> <p class="text-zinc-500 text-[10px] font-bold mt-2">Meta: 500</p> </div>
+                    <div class="kpi-card"> <p class="text-zinc-600 text-[10px] font-black uppercase tracking-wider">Lúcio Uptime</p> <h3 class="text-4xl font-black text-indigo-500 mt-3 tracking-tighter">99.9%</h3> <p class="text-green-500 text-[10px] font-bold mt-2">Monitorado</p> </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-8">
+                    <!-- GRÁFICO GRANDE -->
+                    <div class="kpi-card col-span-2 flex flex-col justify-between">
+                        <div class="flex justify-between items-center mb-8">
+                            <h4 class="font-black text-lg uppercase tracking-tight">Histórico de Performance</h4>
+                            <select class="bg-black border border-zinc-800 text-[10px] px-3 py-1 rounded-lg"> <option>Últimos 7 dias</option> </select>
+                        </div>
+                        <div class="h-60 flex items-end justify-around pb-2">
+                            <div class="bar" style="height: 30%"></div>
+                            <div class="bar" style="height: 50%"></div>
+                            <div class="bar" style="height: 45%"></div>
+                            <div class="bar" style="height: 85%"></div>
+                            <div class="bar" style="height: 60%"></div>
+                            <div class="bar" style="height: 95%"></div>
+                            <div class="bar" style="height: 70%"></div>
+                        </div>
+                    </div>
+                    <!-- FEED LATERAL -->
+                    <div class="kpi-card">
+                        <h4 class="font-black text-lg uppercase tracking-tight mb-8">Live Logs</h4>
+                        <div class="space-y-6">
+                            <div class="flex gap-4 border-b border-zinc-900 pb-4">
+                                <div class="w-2 h-2 rounded-full bg-green-500 mt-1"></div>
+                                <div><p class="text-sm font-bold">Deploy v8.0 Concluído</p><p class="text-[10px] text-zinc-500 font-medium">Lúcio: Arquivos injetados via SSH.</p></div>
+                            </div>
+                            <div class="flex gap-4 border-b border-zinc-900 pb-4">
+                                <div class="w-2 h-2 rounded-full bg-indigo-500 mt-1"></div>
+                                <div><p class="text-sm font-bold">Mineração Iniciada</p><p class="text-[10px] text-zinc-500 font-medium">Dante: 50 leads de Lisboa mapeados.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let scene, camera, renderer, torus;
+        function init3D() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+            torus = new THREE.Mesh(new THREE.TorusKnotGeometry(3, 0.4, 200, 32), new THREE.MeshStandardMaterial({ color: 0x6366f1, wireframe: true, transparent: true, opacity: 0.15 }));
+            scene.add(torus);
+            scene.add(new THREE.PointLight(0x6366f1, 15, 50));
+            camera.position.z = 15;
+        }
+        function animate() { requestAnimationFrame(animate); torus.rotation.y += 0.005; renderer.render(scene, camera); }
+        function showDashboard() {
+            gsap.to("#view-login", { opacity: 0, scale: 0.9, duration: 0.5, onComplete: () => {
+                document.getElementById("view-login").style.display = "none";
+                const dash = document.getElementById("view-dash");
+                dash.style.display = "block";
+                setTimeout(() => dash.classList.add("active"), 50);
+                gsap.to(camera.position, { z: 25, x: 15, duration: 2, ease: "power2.inOut" });
+            }});
+        }
+        init3D(); animate();
+        window.onresize = () => { camera.aspect = window.innerWidth/window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); };
+    </script>
+</body>
+</html>
