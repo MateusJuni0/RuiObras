@@ -9,13 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-main: #080808;
-            --bg-secondary: #121212;
-            --accent: #FF8A00;
-            --accent-hover: #e07a00;
-            --text-main: #ffffff;
-            --text-muted: #a1a1aa;
-            --border-color: rgba(255, 255, 255, 0.1);
+            --bg-main: #FDFDFD; /* Off-White */
+            --bg-secondary: #F0F0F0; /* Lighter Grey */
+            --accent: #C5A059; /* Muted Bronze */
+            --accent-hover: #a6854b;
+            --text-main: #333333; /* Anthracite Gray */
+            --text-muted: #666666;
+            --border-color: rgba(0, 0, 0, 0.1);
         }
 
         * {
@@ -58,7 +58,7 @@
             top: 0;
             width: 100%;
             padding: 24px 0;
-            background: rgba(8, 8, 8, 0.85);
+            background: rgba(253, 253, 253, 0.85); /* Slightly transparent for glass effect */
             backdrop-filter: blur(12px);
             z-index: 100;
             border-bottom: 1px solid var(--border-color);
@@ -105,7 +105,7 @@
         .btn {
             display: inline-block;
             background-color: var(--accent);
-            color: var(--bg-main);
+            color: #ffffff; /* White text on bronze */
             padding: 16px 32px;
             font-family: 'Syne', sans-serif;
             font-weight: 700;
@@ -135,10 +135,10 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to right, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.4) 100%),
-                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop') center/cover;
+            background: linear-gradient(to right, rgba(253, 253, 253, 0.95) 0%, rgba(253, 253, 253, 0.4) 100%),
+                        url('https://images.unsplash.com/photo-1579737924403-90d56636735a?q=80&w=2070&auto=format&fit=crop') center/cover; /* Luminous architecture */
             z-index: -1;
-            filter: grayscale(80%) brightness(0.7);
+            filter: grayscale(50%) brightness(1.1);
         }
 
         .hero-content {
@@ -150,6 +150,7 @@
             line-height: 1;
             margin-bottom: 24px;
             font-weight: 800;
+            color: var(--text-main);
         }
 
         .hero p {
@@ -187,7 +188,7 @@
             height: auto;
             aspect-ratio: 4/5;
             object-fit: cover;
-            filter: grayscale(100%);
+            filter: grayscale(80%); /* Subtle grayscale */
             transition: filter 0.5s ease;
         }
 
@@ -198,6 +199,7 @@
         .sobre-content h2 {
             font-size: clamp(2rem, 4vw, 3.5rem);
             margin-bottom: 32px;
+            color: var(--text-main);
         }
 
         .sobre-content p {
@@ -215,6 +217,7 @@
 
         .servicos-header h2 {
             font-size: clamp(2rem, 4vw, 3.5rem);
+            color: var(--text-main);
         }
 
         .cards-grid {
@@ -224,13 +227,20 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.7); /* White translucent */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
             padding: 40px;
             transform-style: preserve-3d;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Soft shadow */
+            color: #333; /* Dark text on light card */
+        }
+        
+        .card:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
         }
 
         .card-content {
@@ -248,6 +258,7 @@
         .card h3 {
             font-size: 1.5rem;
             margin-bottom: 16px;
+            color: var(--text-main); /* Ensure headings are dark */
         }
 
         .card p {
@@ -281,6 +292,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             font-size: 0.75rem;
+            color: var(--text-muted);
         }
 
         /* Contact Section */
@@ -297,6 +309,7 @@
         .contact-details h2 {
             font-size: clamp(2rem, 4vw, 3.5rem);
             margin-bottom: 40px;
+            color: var(--text-main);
         }
 
         .contact-item {
@@ -313,6 +326,7 @@
         .contact-item p {
             font-size: 1.5rem;
             font-weight: 700;
+            color: var(--text-main);
         }
 
         /* Footer */
@@ -351,21 +365,21 @@
 
     <section id="hero" class="hero">
         <div class="container hero-content">
-            <h1 class="reveal-hero">Redefinindo a <br><span class="text-accent">Engenharia</span> <br>em Lisboa</h1>
-            <p class="reveal-hero">Elevamos o padrão da construção civil com rigor técnico e estética industrial de alta classe.</p>
-            <a href="#servicos" class="btn reveal-hero">Explorar Soluções</a>
+            <h1 class="reveal-hero">Engenharia e <br><span class="text-accent">Reabilitação</span> <br>de Prestígio em Lisboa</h1>
+            <p class="reveal-hero">Com um legado de excelência, transformamos espaços com rigor técnico e design sofisticado, criando património duradouro.</p>
+            <a href="#servicos" class="btn reveal-hero">Explorar Projectos</a>
         </div>
     </section>
 
     <section id="sobre" class="section sobre">
         <div class="container sobre-grid">
             <div class="sobre-img-wrapper reveal">
-                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070&auto=format&fit=crop" alt="Renovação de Luxo" class="sobre-img">
+                <img src="https://images.unsplash.com/photo-1541888081636-f365dce75525?q=80&w=2070&auto=format&fit=crop" alt="Arquitetura Contemporânea" class="sobre-img">
             </div>
             <div class="sobre-content reveal">
-                <h2>Excelência em cada <span class="text-accent">detalhe</span></h2>
-                <p>Com mais de duas décadas de atuação no mercado de luxo de Lisboa, Cascais e Sintra, a Rui Obras especializa-se em projetos onde a precisão e o design se encontram.</p>
-                <p>A nossa abordagem industrial garante estruturas robustas, enquanto o nosso olhar estético entrega acabamentos dignos das melhores revistas de arquitetura.</p>
+                <h2>Onde a Visão se Torna <span class="text-accent">Realidade</span></h2>
+                <p>A Rui Obras é sinónimo de inovação e confiança. Especializamo-nos em reabilitação urbana e construção de moradias de luxo, com foco em resultados impecáveis que superam as expectativas.</p>
+                <p>A nossa equipa de engenheiros e designers trabalha em sinergia para garantir que cada projecto, desde Cascais a Sintra, reflita o mais alto padrão de qualidade e estética.</p>
                 <a href="#contacto" class="text-accent" style="font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: 1px;">Agendar Consultoria Técnica →</a>
             </div>
         </div>
@@ -374,28 +388,28 @@
     <section id="servicos" class="section">
         <div class="container">
             <div class="servicos-header reveal">
-                <h2>Serviços de <span class="text-accent">Elite</span></h2>
+                <h2>Os Nossos <span class="text-accent">Serviços de Luxo</span></h2>
             </div>
             <div class="cards-grid">
-                <div class="card reveal" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                <div class="card reveal" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="card-content">
                         <div class="card-icon">01</div>
-                        <h3>Reabilitação de Luxo</h3>
-                        <p>Preservação histórica com reforço estrutural de última geração e design contemporâneo.</p>
+                        <h3>Reabilitação de Prestígio</h3>
+                        <p>Recuperação e valorização de edifícios, preservando a história com a modernidade necessária.</p>
                     </div>
                 </div>
-                <div class="card reveal" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                <div class="card reveal" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="card-content">
                         <div class="card-icon">02</div>
-                        <h3>Remodelação Total</h3>
-                        <p>Transformação completa de interiores focada em materiais nobres e funcionalidade absoluta.</p>
+                        <h3>Remodelação Exclusiva</h3>
+                        <p>Transformação de interiores com materiais nobres e design à medida, criando ambientes únicos.</p>
                     </div>
                 </div>
-                <div class="card reveal" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                <div class="card reveal" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="card-content">
                         <div class="card-icon">03</div>
-                        <h3>Gestão de Projetos</h3>
-                        <p>Controlo rigoroso de cronograma e orçamento. Do licenciamento à entrega da chave.</p>
+                        <h3>Gestão de Projecto</h3>
+                        <p>Coordenação total da obra, do licenciamento à entrega, com controlo rigoroso de qualidade e prazos.</p>
                     </div>
                 </div>
             </div>
@@ -407,11 +421,11 @@
             <div class="stats-grid">
                 <div class="stat-item reveal">
                     <h4>+20</h4>
-                    <p>Anos de Mercado</p>
+                    <p>Anos de Experiência</p>
                 </div>
                 <div class="stat-item reveal">
                     <h4>+500</h4>
-                    <p>Obras Concluídas</p>
+                    <p>Projectos Concluídos</p>
                 </div>
                 <div class="stat-item reveal">
                     <h4>Lisboa</h4>
@@ -419,7 +433,7 @@
                 </div>
                 <div class="stat-item reveal">
                     <h4>100%</h4>
-                    <p>Clientes Satisfeitos</p>
+                    <p>Satisfação Cliente</p>
                 </div>
             </div>
         </div>
@@ -428,23 +442,23 @@
     <section id="contacto" class="section">
         <div class="container contact-grid">
             <div class="contact-details reveal">
-                <h2>Pronto para iniciar o seu <span class="text-accent">Legado?</span></h2>
+                <h2>Comece o Seu <span class="text-accent">Próximo Capítulo</span></h2>
                 <div class="contact-item">
                     <h3>Telemóvel Directo</h3>
                     <p>963 604 042</p>
                 </div>
                 <div class="contact-item">
-                    <h3>Sede</h3>
+                    <h3>Sede Central</h3>
                     <p>Lisboa, Portugal</p>
                 </div>
                 <div class="contact-item">
-                    <h3>Email</h3>
+                    <h3>Email Empresarial</h3>
                     <p>geral@ruiobras.pt</p>
                 </div>
             </div>
             <div class="reveal">
-                <p class="text-muted" style="font-size: 1.25rem; margin-bottom: 40px;">Contacte-nos agora para uma avaliação técnica no local. Atuamos em toda a região de Lisboa com equipas especializadas.</p>
-                <a href="tel:963604042" class="btn" style="width: 100%; text-align: center;">Falar com Engenheiro Responsável</a>
+                <p class="text-muted" style="font-size: 1.25rem; margin-bottom: 40px;">Contacte a Rui Obras para uma consultoria gratuita. A nossa equipa está pronta para transformar a sua visão em realidade, com um toque de luxo e engenharia de precisão.</p>
+                <a href="tel:963604042" class="btn" style="width: 100%; text-align: center;">Agendar Consultoria</a>
             </div>
         </div>
     </section>
@@ -463,9 +477,9 @@
 
         // Hero Animations
         gsap.from(".reveal-hero", {
-            y: 40,
+            y: 50,
             opacity: 0,
-            duration: 1,
+            duration: 1.2,
             stagger: 0.2,
             ease: "power3.out",
             delay: 0.5
@@ -474,25 +488,28 @@
         // Scroll Reveal Animations
         const reveals = document.querySelectorAll(".reveal");
         reveals.forEach((el) => {
-            gsap.to(el, {
+            gsap.fromTo(el, {
+                y: 50,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: "power3.out",
                 scrollTrigger: {
                     trigger: el,
                     start: "top 85%",
                     toggleActions: "play none none none"
-                },
-                y: 0,
-                opacity: 1,
-                duration: 1,
-                ease: "power3.out"
+                }
             });
         });
 
-        // Initialize Tilt
+        // Initialize Tilt on cards
         VanillaTilt.init(document.querySelectorAll(".card"), {
-            max: 10,
+            max: 5,
             speed: 400,
             glare: true,
-            "max-glare": 0.2
+            "max-glare": 0.1,
         });
     </script>
 </body>
