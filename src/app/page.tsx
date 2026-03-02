@@ -47,7 +47,7 @@ export default function Home() {
       <nav className="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="font-serif text-2xl tracking-widest uppercase text-white font-semibold">
-            Obras<span className="text-primary ml-2">Oliveira</span>
+            Rui Santos<span className="text-primary ml-2">Construção</span>
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
             <a href="#sobre" className="hover:text-primary transition-colors uppercase">Sobre</a>
@@ -82,7 +82,7 @@ export default function Home() {
               A Arte da <span className="text-primary italic">Transformação</span>
             </motion.h1>
             <motion.p variants={fadeIn} className="text-neutral-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light">
-              Excelência em obras e remodelações residenciais e comerciais em Lisboa e arredores. Elevamos o padrão da construção civil.
+              Excelência em obras e remodelações residenciais e comerciais em Lisboa e arredores. Rui Santos Construção eleva o padrão da construção civil.
             </motion.p>
             <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-primary hover:bg-white hover:text-black text-primary-foreground rounded-none uppercase tracking-widest h-14 px-8">
@@ -106,8 +106,7 @@ export default function Home() {
               <h2 className="text-primary tracking-widest uppercase text-sm font-semibold mb-3">Quem Somos</h2>
               <h3 className="font-serif text-4xl md:text-5xl text-white mb-6">Mestres na Construção & Remodelação</h3>
               <p className="text-neutral-400 mb-6 font-light leading-relaxed">
-                Mais de uma década a transformar espaços com rigor, criatividade e confiança. Da planta à chave na mão em Lisboa e arredores.
-                A Obras Oliveira coordena todas as etapas — desde a elaboração de projetos e licenciamento até acabamentos finais e entrega de imóveis prontos a habitar.
+                Mais de uma década a transformar espaços com rigor, criatividade e confiança. Rui Santos Construção coordena todas as etapas — desde a elaboração de projetos e licenciamento até acabamentos finais e entrega de imóveis prontos a habitar em Lisboa e arredores.
               </p>
               <div className="grid grid-cols-2 gap-6 mt-10">
                 <div className="border-l border-primary pl-4">
@@ -226,7 +225,7 @@ export default function Home() {
       <section className="py-24 bg-neutral-900 border-y border-white/5">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h3 className="font-serif text-3xl text-white">O Padrão Oliveira</h3>
+            <h3 className="font-serif text-3xl text-white">O Padrão Rui Santos</h3>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
@@ -260,11 +259,11 @@ export default function Home() {
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <Phone className="text-primary w-5 h-5" />
-                  <span className="text-white tracking-wide">+351 961 227 666</span>
+                  <span className="text-white tracking-wide">+351 963 604 042</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <Mail className="text-primary w-5 h-5" />
-                  <span className="text-white tracking-wide">oliveiraobras0@gmail.com</span>
+                  <span className="text-white tracking-wide">rui.santos.construcao@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="text-primary w-5 h-5" />
@@ -304,7 +303,7 @@ export default function Home() {
       </section>
 
       <footer className="border-t border-white/10 bg-neutral-950 py-8 text-center text-neutral-500 text-sm">
-        <p>&copy; {new Date().getFullYear()} Obras Oliveira. Todos os direitos reservados. Transformação e Qualidade.</p>
+        <p>&copy; {new Date().getFullYear()} Rui Santos Construção. Todos os direitos reservados. Transformação e Qualidade.</p>
       </footer>
     </main>
   );
