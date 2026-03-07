@@ -13,7 +13,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Obras Oliveira | Especialistas em Remodelações de Elite",
+  title: "Rui Santos Construção | Especialistas em Remodelações de Elite",
   description: "Transformamos espaços com qualidade, transparência e confiança em Lisboa.",
 };
 
@@ -27,6 +27,7 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${montserrat.variable} font-body bg-neutral-950 text-neutral-50 antialiased selection:bg-amber-600/30 selection:text-amber-500`}
       >
+        <div className="grain"></div>
         {children}
       </body>
     </html>
