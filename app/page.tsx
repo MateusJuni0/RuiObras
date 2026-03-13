@@ -121,10 +121,10 @@ export default function Home() {
           </Magnetic>
 
           <div className="hidden md:flex items-center gap-8">
-            {["Serviços", "Processo", "Garantia", "Contactos"].map((item) => (
+            {["Serviços", "Processo", "Portfólio", "Garantias", "Contactos"].map((item) => (
               <a
                 key={item}
-                href={`#${item.toLowerCase()}`}
+                href={item === "Portfólio" ? "/portfolio" : item === "Garantias" ? "/garantias" : `/#${item.toLowerCase()}`}
                 className="text-sm font-medium text-neutral-400 hover:text-amber-400 transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-amber-500 after:transition-all hover:after:w-full"
               >
                 {item}
@@ -154,13 +154,13 @@ export default function Home() {
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-40 bg-neutral-950/95 backdrop-blur-3xl flex flex-col items-center justify-center gap-8"
           >
-            {["Serviços", "Processo", "Garantia", "Contactos"].map((item, i) => (
+            {["Serviços", "Processo", "Portfólio", "Garantias", "Contactos"].map((item, i) => (
               <motion.a
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 key={item}
-                href={`#${item.toLowerCase()}`}
+                href={item === "Portfólio" ? "/portfolio" : item === "Garantias" ? "/garantias" : `/#${item.toLowerCase()}`}
                 onClick={() => setMobileMenu(false)}
                 className="text-3xl font-heading font-bold text-neutral-300 hover:text-amber-500 transition-colors"
               >
@@ -233,7 +233,7 @@ export default function Home() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, ease: "easeOut" }}
             whileHover={{ scale: 0.98, y: -5 }}
-            className="md:col-span-2 md:row-span-2 rounded-[2rem] bg-neutral-900/60 border border-white/10 backdrop-blur-2xl p-8 flex flex-col justify-end relative overflow-hidden group shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] hover:shadow-[0_30px_60px_-15px_rgba(217,119,6,0.2)] hover:border-white/20 transition-all duration-500"
+            className="md:col-span-2 md:row-span-2 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-3xl p-8 flex flex-col justify-end relative overflow-hidden group shadow-[0_0_30px_rgba(217,119,6,0.15)] border-white/20 hover:shadow-[0_0_50px_rgba(217,119,6,0.5)] hover:border-white/20 transition-all duration-500"
           >
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-40 group-hover:scale-105 transition-transform duration-1000" />
             <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/80 to-transparent z-10" />
@@ -257,7 +257,7 @@ export default function Home() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
             whileHover={{ scale: 0.98, y: -5 }}
-            className="md:col-span-1 md:row-span-1 rounded-[2rem] bg-neutral-900/60 border border-white/10 backdrop-blur-2xl p-8 relative overflow-hidden group shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] hover:shadow-[0_30px_60px_-15px_rgba(217,119,6,0.15)] hover:border-white/20 transition-all duration-500 flex flex-col justify-between"
+            className="md:col-span-1 md:row-span-1 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-3xl p-8 relative overflow-hidden group shadow-[0_0_30px_rgba(217,119,6,0.15)] border-white/20 hover:shadow-[0_0_50px_rgba(217,119,6,0.5)] hover:border-white/20 transition-all duration-500 flex flex-col justify-between"
           >
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80')] bg-cover bg-center opacity-20 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000" />
             <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/50 to-neutral-950 z-10" />
@@ -277,7 +277,7 @@ export default function Home() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
             whileHover={{ scale: 0.98, y: -5 }}
-            className="md:col-span-1 md:row-span-2 rounded-[2rem] bg-neutral-900/60 border border-white/10 backdrop-blur-2xl p-8 relative overflow-hidden flex flex-col group shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] hover:shadow-[0_30px_60px_-15px_rgba(59,130,246,0.15)] hover:border-white/20 transition-all duration-500"
+            className="md:col-span-1 md:row-span-2 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-3xl p-8 relative overflow-hidden flex flex-col group shadow-[0_0_30px_rgba(217,119,6,0.15)] border-white/20 hover:shadow-[0_0_50px_rgba(217,119,6,0.5)] hover:border-white/20 transition-all duration-500"
           >
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000" />
             <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/20 via-neutral-950/80 to-neutral-950 z-10" />
@@ -306,7 +306,7 @@ export default function Home() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
             whileHover={{ scale: 0.98, y: -5 }}
-            className="md:col-span-1 md:row-span-1 rounded-[2rem] bg-neutral-900/60 border border-white/10 backdrop-blur-2xl p-8 relative overflow-hidden group shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] hover:shadow-[0_30px_60px_-15px_rgba(168,85,247,0.15)] hover:border-white/20 transition-all duration-500 flex flex-col justify-between"
+            className="md:col-span-1 md:row-span-1 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-3xl p-8 relative overflow-hidden group shadow-[0_0_30px_rgba(217,119,6,0.15)] border-white/20 hover:shadow-[0_0_50px_rgba(217,119,6,0.5)] hover:border-white/20 transition-all duration-500 flex flex-col justify-between"
           >
             <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-all duration-700 z-10" />
             <Paintbrush className="w-10 h-10 text-neutral-200 relative z-20" />
@@ -323,7 +323,7 @@ export default function Home() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
             whileHover={{ scale: 0.98, y: -5 }}
-            className="md:col-span-2 md:row-span-1 rounded-[2rem] bg-neutral-900/60 border border-white/10 backdrop-blur-2xl p-8 relative overflow-hidden flex items-center justify-between group shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] hover:shadow-[0_30px_60px_-15px_rgba(217,119,6,0.15)] hover:border-white/20 transition-all duration-500"
+            className="md:col-span-2 md:row-span-1 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-3xl p-8 relative overflow-hidden flex items-center justify-between group shadow-[0_0_30px_rgba(217,119,6,0.15)] border-white/20 hover:shadow-[0_0_50px_rgba(217,119,6,0.5)] hover:border-white/20 transition-all duration-500"
           >
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556910103-1c02745a872f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-30 mix-blend-luminosity group-hover:scale-105 transition-transform duration-1000" />
             <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/90 to-transparent z-10" />
@@ -345,7 +345,7 @@ export default function Home() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
             whileHover={{ scale: 0.98, y: -5 }}
-            className="md:col-span-2 md:row-span-1 rounded-[2rem] bg-gradient-to-br from-neutral-900 to-neutral-950 border border-amber-500/20 backdrop-blur-2xl p-8 relative overflow-hidden flex items-center justify-between group shadow-[0_20px_50px_-12px_rgba(217,119,6,0.1)] hover:shadow-[0_30px_60px_-15px_rgba(217,119,6,0.25)] hover:border-amber-500/40 transition-all duration-500"
+            className="md:col-span-2 md:row-span-1 rounded-[2rem] bg-gradient-to-br from-neutral-900 to-neutral-950 border border-amber-500/20 backdrop-blur-2xl p-8 relative overflow-hidden flex items-center justify-between group shadow-[0_20px_50px_-12px_rgba(217,119,6,0.1)] hover:shadow-[0_0_50px_rgba(217,119,6,0.5)] hover:border-amber-500/40 transition-all duration-500"
           >
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-10 mix-blend-screen" />
             <div className="absolute inset-0 bg-gradient-to-l from-amber-600/10 to-transparent z-10 group-hover:opacity-50 transition-opacity duration-500" />
@@ -423,7 +423,7 @@ export default function Home() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="rounded-[2.5rem] bg-neutral-900/40 border border-white/10 backdrop-blur-2xl p-8 md:p-16 relative overflow-hidden shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]"
+          className="rounded-[2.5rem] bg-white/5 backdrop-blur-3xl border border-white/10 backdrop-blur-2xl p-8 md:p-16 relative overflow-hidden shadow-[0_0_80px_rgba(217,119,6,0.2)] border border-amber-500/20"
         >
           <GlowOrb className="w-[500px] h-[500px] bg-amber-600/20 top-[-20%] left-[-10%]" />
           <GlowOrb className="w-[500px] h-[500px] bg-amber-600/10 bottom-[-20%] right-[-10%]" />
