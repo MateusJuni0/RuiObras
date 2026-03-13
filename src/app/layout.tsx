@@ -13,8 +13,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Rui Santos Construção | Especialistas em Remodelações de Elite",
-  description: "Transformamos espaços com qualidade, transparência e confiança em Lisboa.",
+  title: "RuiObras | Construção & Remodelação de Elite",
+  description: "Transformamos o seu espaço com precisão, excelência e design contemporâneo. Remodelações de alto padrão em Portugal.",
 };
 
 export default function RootLayout({
@@ -25,9 +25,9 @@ export default function RootLayout({
   return (
     <html lang="pt" className="dark scroll-smooth">
       <body
-        className={`${playfair.variable} ${montserrat.variable} font-body bg-neutral-950 text-neutral-50 antialiased selection:bg-amber-600/30 selection:text-amber-500`}
+        className={`${playfair.variable} ${montserrat.variable} font-body bg-neutral-950 text-neutral-50 antialiased selection:bg-amber-600/30 selection:text-amber-500 overflow-x-hidden`}
       >
-        <div className="grain"></div>
+        <div className="grain pointer-events-none z-50 fixed inset-0 opacity-[0.03]"></div>
         {children}
       </body>
     </html>
