@@ -308,11 +308,16 @@ export default function Home() {
             whileHover={{ scale: 0.98, y: -5 }}
             className="md:col-span-1 md:row-span-1 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-3xl p-8 relative overflow-hidden group shadow-[0_0_30px_rgba(217,119,6,0.15)] border-white/20 hover:shadow-[0_0_50px_rgba(217,119,6,0.5)] hover:border-white/20 transition-all duration-500 flex flex-col justify-between"
           >
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-30 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000" />
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/60 to-transparent z-10" />
             <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-all duration-700 z-10" />
-            <Paintbrush className="w-10 h-10 text-neutral-200 relative z-20" />
-            <div className="relative z-20 mt-6">
+            
+            <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20 relative z-20">
+              <Paintbrush className="w-6 h-6 text-purple-400" />
+            </div>
+            <div className="relative z-20 mt-6 transform group-hover:translate-y-[-5px] transition-transform duration-500">
               <h3 className="text-2xl font-heading font-bold mb-2 text-white">Acabamentos</h3>
-              <p className="text-neutral-400">Pinturas, estuques e microcimento.</p>
+              <p className="text-neutral-300">Pinturas, estuques e microcimento.</p>
             </div>
           </motion.div>
 
@@ -325,7 +330,7 @@ export default function Home() {
             whileHover={{ scale: 0.98, y: -5 }}
             className="md:col-span-2 md:row-span-1 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-3xl p-8 relative overflow-hidden flex items-center justify-between group shadow-[0_0_30px_rgba(217,119,6,0.15)] border-white/20 hover:shadow-[0_0_50px_rgba(217,119,6,0.5)] hover:border-white/20 transition-all duration-500"
           >
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556910103-1c02745a872f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-30 mix-blend-luminosity group-hover:scale-105 transition-transform duration-1000" />
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-30 mix-blend-luminosity group-hover:scale-105 transition-transform duration-1000" />
             <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/90 to-transparent z-10" />
             <div className="absolute inset-0 bg-gradient-to-r from-amber-900/20 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
