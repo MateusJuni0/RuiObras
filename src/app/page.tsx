@@ -38,11 +38,58 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
 
+  // Form State
+  const [formData, setFormData] = useState({
+    fullName: "",
+    phone: "",
+    email: "",
+    projectDetails: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { placeholder, value } = e.target;
+    // Map placeholder to state keys since inputs don't have 'name' attributes in the current JSX
+    const keyMap: { [key: string]: string } = {
+      "Nome Completo": "fullName",
+      "Telefone": "phone",
+      "Email": "email",
+      "Descreva brevemente o seu projeto...": "projectDetails"
+    };
+    const key = keyMap[placeholder] || e.target.id;
+    if (key) {
+      setFormData((prev) => ({ ...prev, [key]: value }));
+    }
+  };
+
+  const onSubmit = async () => {
+    setIsLoading(true);
+    setIsSuccess(false);
+    setIsError(false);
+
+    try {
+      const { submitLead } = await import("./actions");
+      const result = await submitLead(formData);
+      if (result.success) {
+        setIsSuccess(true);
+        setFormData({ fullName: "", phone: "", email: "", projectDetails: "" });
+      } else {
+        setIsError(true);
+      }
+    } catch (error) {
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-50 overflow-hidden relative">
