@@ -397,33 +397,50 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="space-y-4">
               <div className="space-y-2">
                 <Input 
                   placeholder="Nome Completo" 
+                  value={formData.fullName}
+                  onChange={handleInputChange}
                   className="bg-neutral-950/50 border-white/10 h-12 text-white placeholder:text-neutral-500 focus-visible:ring-amber-500"
+                  disabled={isLoading}
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <Input 
                   placeholder="Telefone" 
+                  value={formData.phone}
+                  onChange={handleInputChange}
                   className="bg-neutral-950/50 border-white/10 h-12 text-white placeholder:text-neutral-500 focus-visible:ring-amber-500"
+                  disabled={isLoading}
                 />
                 <Input 
                   placeholder="Email" 
+                  value={formData.email}
+                  onChange={handleInputChange}
                   className="bg-neutral-950/50 border-white/10 h-12 text-white placeholder:text-neutral-500 focus-visible:ring-amber-500"
+                  disabled={isLoading}
                 />
               </div>
               <div className="space-y-2">
                 <Textarea 
                   placeholder="Descreva brevemente o seu projeto..." 
+                  value={formData.projectDetails}
+                  onChange={handleInputChange}
                   className="bg-neutral-950/50 border-white/10 min-h-[120px] text-white placeholder:text-neutral-500 focus-visible:ring-amber-500"
+                  disabled={isLoading}
                 />
               </div>
-              <Button className="w-full h-12 bg-amber-600 hover:bg-amber-500 text-neutral-950 font-bold rounded-lg transition-all duration-300">
-                Solicitar Orçamento
+              <Button 
+                onClick={onSubmit}
+                className="w-full h-12 bg-amber-600 hover:bg-amber-500 text-neutral-950 font-bold rounded-lg transition-all duration-300"
+                disabled={isLoading}
+              >
+                {isLoading ? "A enviar..." : "Solicitar Orçamento"}
               </Button>
-            </div>
+              {isSuccess && <p className="text-green-500 text-center text-sm">Pedido enviado com sucesso!</p>}
+              {isError && <p className="text-red-500 text-center text-sm">Erro ao enviar pedido. Tente novamente.</p>}
+
           </div>
         </div>
       </section>
