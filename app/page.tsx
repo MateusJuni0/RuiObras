@@ -56,18 +56,8 @@ export default function Home() {
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { placeholder, value } = e.target;
-    // Map placeholder to state keys since inputs don't have 'name' attributes in the current JSX
-    const keyMap: { [key: string]: string } = {
-      "Nome Completo": "fullName",
-      "Telefone": "phone",
-      "Email": "email",
-      "Descreva brevemente o seu projeto...": "projectDetails"
-    };
-    const key = keyMap[placeholder] || e.target.id;
-    if (key) {
-      setFormData((prev) => ({ ...prev, [key]: value }));
-    }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const onSubmit = async () => {
@@ -399,6 +389,7 @@ export default function Home() {
 
               <div className="space-y-2">
                 <Input 
+                  name="fullName"
                   placeholder="Nome Completo" 
                   value={formData.fullName}
                   onChange={handleInputChange}
@@ -408,6 +399,7 @@ export default function Home() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <Input 
+                  name="phone"
                   placeholder="Telefone" 
                   value={formData.phone}
                   onChange={handleInputChange}
@@ -415,6 +407,7 @@ export default function Home() {
                   disabled={isLoading}
                 />
                 <Input 
+                  name="email"
                   placeholder="Email" 
                   value={formData.email}
                   onChange={handleInputChange}
@@ -424,6 +417,7 @@ export default function Home() {
               </div>
               <div className="space-y-2">
                 <Textarea 
+                  name="projectDetails"
                   placeholder="Descreva brevemente o seu projeto..." 
                   value={formData.projectDetails}
                   onChange={handleInputChange}
